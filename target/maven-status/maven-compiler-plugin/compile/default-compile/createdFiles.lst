@@ -1,0 +1,6 @@
+shoppingcart\RetrieveListEndpoint.class
+shoppingcart\ShoppingCartData.class
+shoppingcart\DeleteBookEndpoint.class
+shoppingcart\AddBookEndpoint.class
+shoppingcart\Main.class
+shoppingcart\ShoppingCart.class
