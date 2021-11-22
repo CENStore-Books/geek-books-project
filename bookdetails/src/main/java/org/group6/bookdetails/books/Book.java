@@ -1,31 +1,53 @@
 package org.group6.bookdetails.books;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class bookdetailslist {
+@Table(name = "booksList")
+public class Book {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id = 1;
 	
+	@Column(name = "bookISBN")
 	private int bookISBN;
+
+	@Column(name = "bookName")
 	private String bookName;
+
+	@Column(name = "bookDesc")
 	private String bookDesc;
+
+	@Column(name = "bookPrice")
 	private double bookPrice;
+
+	@Column(name = "bookAuthorID")
 	private int bookAuthorID;
+
+	@Column(name = "bookAuthor")
 	private String bookAuthor;
+
+	@Column(name = "bookGenre")
 	private String bookGenre;
+
+	@Column(name = "bookPublisher")
 	private String bookPublisher;
+
+	@Column(name = "bookYearPublished")
 	private int bookYearPublished;
+
+	@Column(name = "bookCopiesSold")
 	private int bookCopiesSold;
 
-	public bookdetailslist(){}
-	
-	public bookdetailslist(int id, int bookISBN, String bookName, String bookDesc, double bookPrice, int bookAuthorID, String bookAuthor, String bookGenre, String bookPublisher, int bookYearPublished, int bookCopiesSold) {
+	public Book(){}
+
+	public Book(int id, int bookISBN, String bookName, String bookDesc, double bookPrice, int bookAuthorID, String bookAuthor, String bookGenre, String bookPublisher, int bookYearPublished, int bookCopiesSold) {
 		this.id = id;
 		this.bookISBN = bookISBN;
 		this.bookName = bookName;
@@ -126,4 +148,5 @@ public class bookdetailslist {
 	public void setBookCopiesSold(int bookCopiesSold) {
 		this.bookCopiesSold = bookCopiesSold;
 	}
+	
 }

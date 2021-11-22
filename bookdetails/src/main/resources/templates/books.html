@@ -1,18 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Geek Books - Books</title>
+    <title>Geek Books Store - Books</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
-    <div align="center">
-        <h2>Books</h2>
+    <div class="container my-2">
+        <div style="text-align: center;">
+            <h2>Geek Books Store</h2>
 
-        <a th:href="@{/}">Home</a> |
-        <a th:href="@{books}">Books</a> |
-        <a th:href="@{authors}">Authors</a>
+            <a th:href="@{/}">Home</a> |
+            <a th:href="@{books}">Books</a> |
+            <a th:href="@{authors}">Authors</a>
+        </div>
+
+        <h1>Books List</h1>
+        <a th:href="@{/addNewBookForm}" class="btn btn-primary btn-sm mb-3"> Add New Book </a>
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th> ISBN</th>
+                    <th> Title</th>
+                    <th> Description</th>
+                    <th> Price</th>
+                    <th> Author</th>
+                    <th> Genre</th>
+                    <th> Publisher</th>
+                    <th> Year Published</th>
+                    <th> Copies Sold</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="booksList : ${listBooks}">
+                    <td th:text="${booksList.bookISBN}"></td>
+                    <td th:text="${booksList.bookName}"></td>
+                    <td th:text="${booksList.bookDesc}"></td>
+                    <td th:text="${booksList.bookPrice}"></td>
+                    <td th:text="${booksList.bookAuthor}"></td>
+                    <td th:text="${booksList.bookGenre}"></td>
+                    <td th:text="${booksList.bookPublisher}"></td>
+                    <td th:text="${booksList.bookYearPublished}"></td>
+                    <td th:text="${booksList.bookCopiesSold}"></td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 </body>
