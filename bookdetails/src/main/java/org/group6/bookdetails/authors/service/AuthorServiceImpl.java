@@ -11,15 +11,15 @@ import org.springframework.stereotype.Service;
 public class AuthorServiceImpl implements AuthorService {
 
 	@Autowired
-	private AuthorRepository repo;
+	private AuthorRepository authorRepo; 
 
 	@Override
 	public List<Author> getAllAuthors() {
-		return repo.findAll();
+		return authorRepo.findAll();
 	}
 
 	@Override
 	public void addAuthor(Author author) {
-		this.repo.save(author);
+		this.authorRepo.save(author);
 	}
 }

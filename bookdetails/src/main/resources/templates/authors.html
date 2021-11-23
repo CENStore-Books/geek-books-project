@@ -26,6 +26,7 @@
                     <th>Last Name</th>
                     <th>Biography</th>
                     <th>Publisher</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,8 @@
                     <td th:text="${authorsList.authorLastName}"></td>
                     <td th:text="${authorsList.authorBio}"></td>
                     <td th:text="${authorsList.authorPublisher}"></td>
+                    <td> <a th:href="@{/showBooksByAuthor/{id}(id=${authorsList.id})}" class="btn btn-primary">See Books</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

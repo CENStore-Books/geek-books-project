@@ -3,7 +3,6 @@ package org.group6.bookdetails.books.controller;
 import java.util.List;
 
 import org.group6.bookdetails.authors.Author;
-import org.group6.bookdetails.authors.controller.AuthorController;
 import org.group6.bookdetails.authors.service.AuthorService;
 import org.group6.bookdetails.books.Book;
 import org.group6.bookdetails.books.service.BooksService;

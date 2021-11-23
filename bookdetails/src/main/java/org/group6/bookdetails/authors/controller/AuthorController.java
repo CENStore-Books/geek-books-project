@@ -2,6 +2,7 @@ package org.group6.bookdetails.authors.controller;
 
 import org.group6.bookdetails.authors.Author;
 import org.group6.bookdetails.authors.service.AuthorService;
+import org.group6.bookdetails.books.service.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,9 @@ public class AuthorController {
 	
 	@Autowired
 	private AuthorService authorRepo;
+
+	@Autowired
+	private BooksService bookRepo;
 
 	@GetMapping("/authors")
 	public String welcome(Model model) {
@@ -32,5 +36,11 @@ public class AuthorController {
 	public String addNewBook(@ModelAttribute("author") Author author) {
 		authorRepo.addAuthor(author);
 		return "redirect:/authors";
+	}
+
+	@GetMapping("/showBooksByAuthor/{id}")
+	public String showBooksByID(Model model) {
+		model.addAttribute("listBooks", bookRepo.getAllBooks());
+		return "show_books_by_author";
 	}
 }

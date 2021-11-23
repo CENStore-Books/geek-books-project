@@ -34,9 +34,6 @@ public class Book {
 	@Column(name = "bookGenre")
 	private String bookGenre;
 
-	@Column(name = "bookPublisher")
-	private String bookPublisher;
-
 	@Column(name = "bookYearPublished")
 	private int bookYearPublished;
 
@@ -56,7 +53,6 @@ public class Book {
 		this.bookDesc = bookDesc;
 		this.bookPrice = bookPrice;
 		this.bookGenre = bookGenre;
-		this.bookPublisher = bookPublisher;
 		this.bookYearPublished = bookYearPublished;
 		this.bookCopiesSold = bookCopiesSold;
 		this.author = author;
@@ -109,15 +105,7 @@ public class Book {
 	public void setBookGenre(String bookGenre) {
 		this.bookGenre = bookGenre;
 	}
-
-	public String getBookPublisher() {
-		return this.bookPublisher;
-	}
-
-	public void setBookPublisher(String bookPublisher) {
-		this.bookPublisher = bookPublisher;
-	}
-
+	
 	public int getBookYearPublished() {
 		return this.bookYearPublished;
 	}
