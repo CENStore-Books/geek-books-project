@@ -24,8 +24,8 @@ public class BooksServiceImpl implements BooksService {
 	}
 
 	@Override
-	public List<Book> getBooksByID() {
-		return bookRepo.findAll();
+	public List<Book> findByAuthorID(String id) {
+		return bookRepo.findByAuthorID(id);
 	}
 	
 }

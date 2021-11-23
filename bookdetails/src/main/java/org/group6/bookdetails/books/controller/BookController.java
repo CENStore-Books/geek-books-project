@@ -45,4 +45,10 @@ public class BookController {
 		bookRepo.addBook(book);
 		return "redirect:/books";
 	}
+
+	@GetMapping("/showBooksByAuthor/{id}")
+	public String showBooksByID(Model model) {
+		model.addAttribute("listFilteredBooks", bookRepo.findByAuthorID("{id}"));
+		return "show_books_by_author";
+	}
 }

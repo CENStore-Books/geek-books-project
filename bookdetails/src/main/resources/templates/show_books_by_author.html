@@ -13,8 +13,8 @@
             <h2>Geek Books Store</h2>
 
             <a th:href="@{/}">Home</a> |
-            <a th:href="@{books}">Books</a> |
-            <a th:href="@{authors}">Authors</a>
+            <a th:href="@{http://localhost:8080/books}">Books</a> |
+            <a th:href="@{http://localhost:8080/authors}">Authors</a>
         </div>
 
         <h1>Books List</h1>
@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="booksList : ${listBooks}">
+                <tr th:each="booksList : ${listFilteredBooks}">
                     <td th:text="${booksList.bookISBN}"></td>
                     <td th:text="${booksList.bookName}"></td>
                     <td th:text="${booksList.bookDesc}"></td>
