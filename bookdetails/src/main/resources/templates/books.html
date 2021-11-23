@@ -39,7 +39,7 @@
                     <td th:text="${booksList.bookName}"></td>
                     <td th:text="${booksList.bookDesc}"></td>
                     <td th:text="${booksList.bookPrice}"></td>
-                    <td th:text="${booksList.bookAuthor}"></td>
+                    <td th:text="|${booksList.author.authorFirstName} ${booksList.author.authorLastName}|"></td>
                     <td th:text="${booksList.bookGenre}"></td>
                     <td th:text="${booksList.bookPublisher}"></td>
                     <td th:text="${booksList.bookYearPublished}"></td>

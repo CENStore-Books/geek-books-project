@@ -26,7 +26,11 @@
             <a>Title:</a> <input type="text" th:field="*{bookName}" placeholder="Title" class="form-control mb-4 col-4">
             <a>Description:</a> <input type="text" th:field="*{bookDesc}" placeholder="Description" class="form-control mb-4 col-4">
             <a>Price:</a> <input type="number" th:field="*{bookPrice}" placeholder="Price" class="form-control mb-4 col-4">
-            <a>Author:</a> <input type="text" th:field="*{bookAuthor}" placeholder="Author" class="form-control mb-4 col-4">
+            <a>Author:</a> <select th:field="*{author}" class="form-control mb-4 col-4" required>
+                <th:block th:each="authorsList : ${listAuthors}">
+                    <option th:text="|${authorsList.authorFirstName} ${authorsList.authorLastName}|" th:value="${authorsList.id}" />
+                </th:block>
+            </select>
             <a>Genre:</a> <input type="text" th:field="*{bookGenre}" placeholder="Genre" class="form-control mb-4 col-4">
             <a>Publisher:</a> <input type="text" th:field="*{bookPublisher}" placeholder="Publisher" class="form-control mb-4 col-4">
             <a>Year Published:</a> <input type="number" th:field="*{bookYearPublished}" placeholder="Year Published" class="form-control mb-4 col-4">

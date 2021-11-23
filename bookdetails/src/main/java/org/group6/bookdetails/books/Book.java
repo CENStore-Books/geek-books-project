@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.group6.bookdetails.authors.Author;
 
 @Entity
 @Table(name = "booksList")
@@ -27,12 +31,6 @@ public class Book {
 	@Column(name = "bookPrice")
 	private double bookPrice;
 
-	@Column(name = "bookAuthorID")
-	private int bookAuthorID;
-
-	@Column(name = "bookAuthor")
-	private String bookAuthor;
-
 	@Column(name = "bookGenre")
 	private String bookGenre;
 
@@ -45,20 +43,23 @@ public class Book {
 	@Column(name = "bookCopiesSold")
 	private int bookCopiesSold;
 
+	@ManyToOne
+	@JoinColumn(name = "bookAuthorID")
+	private Author author;
+
 	public Book(){}
 
-	public Book(int id, int bookISBN, String bookName, String bookDesc, double bookPrice, int bookAuthorID, String bookAuthor, String bookGenre, String bookPublisher, int bookYearPublished, int bookCopiesSold) {
+	public Book(int id, int bookISBN, String bookName, String bookDesc, double bookPrice, int bookAuthorID, String bookAuthor, String bookGenre, String bookPublisher, int bookYearPublished, int bookCopiesSold, Author author) {
 		this.id = id;
 		this.bookISBN = bookISBN;
 		this.bookName = bookName;
 		this.bookDesc = bookDesc;
 		this.bookPrice = bookPrice;
-		this.bookAuthorID = bookAuthorID;
-		this.bookAuthor = bookAuthor;
 		this.bookGenre = bookGenre;
 		this.bookPublisher = bookPublisher;
 		this.bookYearPublished = bookYearPublished;
 		this.bookCopiesSold = bookCopiesSold;
+		this.author = author;
 	}
 
 	public int getId() {
@@ -101,22 +102,6 @@ public class Book {
 		this.bookPrice = bookPrice;
 	}
 
-	public int getBookAuthorID() {
-		return this.bookAuthorID;
-	}
-
-	public void setBookAuthorID(int bookAuthorID) {
-		this.bookAuthorID = bookAuthorID;
-	}
-
-	public String getBookAuthor() {
-		return this.bookAuthor;
-	}
-
-	public void setBookAuthor(String bookAuthor) {
-		this.bookAuthor = bookAuthor;
-	}
-
 	public String getBookGenre() {
 		return this.bookGenre;
 	}
@@ -148,5 +133,13 @@ public class Book {
 	public void setBookCopiesSold(int bookCopiesSold) {
 		this.bookCopiesSold = bookCopiesSold;
 	}
-	
+
+	public Author getAuthor() {
+		return this.author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+
 }
