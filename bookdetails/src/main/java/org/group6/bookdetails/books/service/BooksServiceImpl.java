@@ -6,6 +6,7 @@ import org.group6.bookdetails.books.Book;
 import org.group6.bookdetails.books.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class BooksServiceImpl implements BooksService {
@@ -24,8 +25,8 @@ public class BooksServiceImpl implements BooksService {
 	}
 
 	@Override
-	public List<Book> findByAuthorID(String id) {
-		return bookRepo.findByAuthorID(id);
+	public List<Book> findByAuthorID(@PathVariable(value="id") String id) {
+		return bookRepo.findAllByID(id);
 	}
 	
 }

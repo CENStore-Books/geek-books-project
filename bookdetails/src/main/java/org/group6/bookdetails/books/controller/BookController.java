@@ -47,8 +47,9 @@ public class BookController {
 	}
 
 	@GetMapping("/showBooksByAuthor/{id}")
-	public String showBooksByID(Model model) {
-		model.addAttribute("listFilteredBooks", bookRepo.findByAuthorID("{id}"));
+	public String showBooksByID(Model model, String book_authorid) {
+		//model.addAttribute("listFilteredBooks", bookRepo.getAllBooks());
+		model.addAttribute("listFilteredBooks", bookRepo.findByAuthorID(null));
 		return "show_books_by_author";
 	}
 }
