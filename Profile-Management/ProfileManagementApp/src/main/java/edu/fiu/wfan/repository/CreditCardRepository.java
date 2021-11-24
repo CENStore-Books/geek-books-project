@@ -19,14 +19,5 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, Integer>
 	public CreditCard findByCreditCardId(@Param("card_id")Integer cardId);  
 		
 	@Query("SELECT c FROM CreditCard c JOIN User u ON (c.id = u.id) WHERE c.bankName LIKE %?1% AND u.id = ?2")
-	public List<CreditCard> search(String keyword, Long userId);
-	
-	//@Query("SELECT t FROM Thing t WHERE t.fooIn = ?1 AND t.bar = ?2")
-	//ThingEntity findByFooInAndBar(String fooIn, String bar);
-	
-	//List<CreditCard> findByKeywordsIn(String keyword);
-	
-	//@Query("SELECT c FROM CreditCard c WHERE c.user_id = ?1")
-	//public List<CreditCard> findByUserId(@Param("user_id")Long user_id);
-	 
+	public List<CreditCard> search(String keyword, Long userId);	 
 }
