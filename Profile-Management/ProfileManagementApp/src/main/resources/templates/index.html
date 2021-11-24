@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="UTF-8">
+	<title>Home - GeekText</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	
+</head>
+<body>
+	<div class="contatainer text-center">
+		<div>
+			<p align="right" style="padding: 10px; border: 2px solid #5D6F96; background:#5D6F96; color: white;">
+			Welcome!</p>
+		</div>
+		<div> 
+			<h1>Welcome to GeekText</h1>
+		</div>
+		<div>
+ 			<h3><a th:href="@{/user_profile}">User Profile</a></h3>
+			<h3><a th:href="@{/register}">Register</a></h3>
+			<h3><a th:href="@{/login}">Login</a></h3>       <!--it's the default login url provided by spring security, so we don't have to code login page-->
+			<h3><a th:href="@{/user_list}">Search Users</a></h3>
+		</div>
+	</div>
+</body>
+</html>
