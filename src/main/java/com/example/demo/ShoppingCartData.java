@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package shoppingcart;
+package com.example.demo;
 
-import org.json.JSONException;
+
 
 public class ShoppingCartData {
-    int userID = 0;
-    int[] bookID;
+    private int userID = 0;
+    private int[] bookID;
     
     public ShoppingCartData(int userID, int[] bookID) {
         this.userID = userID;
