@@ -37,22 +37,6 @@ public class CreditCard {
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
 	private User user;
-		
-	/*public CreditCard() {
-	
-	}
-	
-	public CreditCard(User user) {
-		this.user = user;
-	}
-	
-	public CreditCard(String bankName, Long cardNumber, String expireDate,
-			String billingAddress) {
-		this.bankName = bankName;
-		this.cardNumber = cardNumber;
-		this.expireDate = expireDate;
-		this.billingAddress = billingAddress;
-	}*/
 
 	public Integer getCard_id() {
 		return card_id;
