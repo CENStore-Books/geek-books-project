@@ -1,2 +1,2 @@
-# Geek Books Project
-(Group 6) For our CEN 4010 class
+# Geek Books Project - Book Details
+This feature was made by Pablo Flores Lugo
