@@ -1,2 +1,2 @@
-# Geek Books Project
-(Group 6) For our CEN 4010 class
+# Geek Books Project - Wish List Management
+This feature was made by Aaron Estevanez
