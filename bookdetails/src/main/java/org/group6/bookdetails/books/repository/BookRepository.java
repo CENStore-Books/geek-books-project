@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, String> {
-	@Query("SELECT b FROM Book b WHERE b.author =:id")
-	public List<Book> findAllByID(@Param("id") String id);
+	@Query("SELECT b FROM Book b WHERE b.author.id =:id")
+	public List<Book> findAllByID(@Param("id") int id);
 }

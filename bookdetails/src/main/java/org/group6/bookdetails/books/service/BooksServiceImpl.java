@@ -25,7 +25,7 @@ public class BooksServiceImpl implements BooksService {
 	}
 
 	@Override
-	public List<Book> findByAuthorID(@PathVariable(value="id") String id) {
+	public List<Book> findByAuthorID(@PathVariable(value="id") int id) {
 		return bookRepo.findAllByID(id);
 	}
 	

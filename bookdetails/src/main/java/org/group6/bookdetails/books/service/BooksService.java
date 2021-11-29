@@ -7,5 +7,5 @@ import org.group6.bookdetails.books.Book;
 public interface BooksService {
 	List<Book> getAllBooks();
 	void addBook(Book book);
-	List<Book> findByAuthorID(String id);
+	List<Book> findByAuthorID(int aID);
 }

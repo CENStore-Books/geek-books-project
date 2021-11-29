@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -47,9 +48,8 @@ public class BookController {
 	}
 
 	@GetMapping("/showBooksByAuthor/{id}")
-	public String showBooksByID(Model model, String book_authorid) {
-		//model.addAttribute("listFilteredBooks", bookRepo.getAllBooks());
-		model.addAttribute("listFilteredBooks", bookRepo.findByAuthorID(null));
+	public String showBooksByID(Model model, @PathVariable int id) {
+		model.addAttribute("listFilteredBooks", bookRepo.findByAuthorID(id));
 		return "show_books_by_author";
 	}
 }
