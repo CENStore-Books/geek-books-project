@@ -53,10 +53,4 @@ public class BookController {
 		model.addAttribute("listFilteredBooks", bookRepo.findByAuthorID(id));
 		return "show_books_by_author";
 	}
-
-	/* @GetMapping("/books/)
-	public String showBooksByISBN(Model model, @PathVariable int isbn) {
-		model.addAttribute("listFilteredBooks", bookRepo.findByISBN(isbn));
-		return "show_books_by_isbn";
-	} */
 }
