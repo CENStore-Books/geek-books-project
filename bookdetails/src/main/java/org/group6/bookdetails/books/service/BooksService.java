@@ -5,7 +5,7 @@ import java.util.List;
 import org.group6.bookdetails.books.Book;
 
 public interface BooksService {
-	List<Book> getAllBooks();
+	List<Book> getAllBooks(String isbn);
 	void addBook(Book book);
 	List<Book> findByAuthorID(int aID);
 }

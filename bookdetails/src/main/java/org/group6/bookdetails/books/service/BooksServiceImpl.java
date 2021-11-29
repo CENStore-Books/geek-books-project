@@ -15,7 +15,10 @@ public class BooksServiceImpl implements BooksService {
 	private BookRepository bookRepo;
 	
 	@Override
-	public List<Book> getAllBooks() {
+	public List<Book> getAllBooks(String isbn) {
+		if (isbn != null){
+			return bookRepo.findAllByISBN(isbn);
+		}
 		return bookRepo.findAll();
 	}
 
@@ -27,6 +30,5 @@ public class BooksServiceImpl implements BooksService {
 	@Override
 	public List<Book> findByAuthorID(@PathVariable(value="id") int id) {
 		return bookRepo.findAllByID(id);
-	}
-	
+	}	
 }

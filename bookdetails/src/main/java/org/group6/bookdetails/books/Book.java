@@ -20,7 +20,7 @@ public class Book {
 	private int id = 1;
 	
 	@Column(name = "bookISBN")
-	private int bookISBN;
+	private String bookISBN;
 
 	@Column(name = "bookName")
 	private String bookName;
@@ -46,7 +46,7 @@ public class Book {
 
 	public Book(){}
 
-	public Book(int id, int bookISBN, String bookName, String bookDesc, double bookPrice, int bookAuthorID, String bookAuthor, String bookGenre, String bookPublisher, int bookYearPublished, int bookCopiesSold, Author author) {
+	public Book(int id, String bookISBN, String bookName, String bookDesc, double bookPrice, int bookAuthorID, String bookAuthor, String bookGenre, String bookPublisher, int bookYearPublished, int bookCopiesSold, Author author) {
 		this.id = id;
 		this.bookISBN = bookISBN;
 		this.bookName = bookName;
@@ -66,11 +66,11 @@ public class Book {
 		this.id = id;
 	}
 
-	public int getBookISBN() {
+	public String getBookISBN() {
 		return this.bookISBN;
 	}
 
-	public void setBookISBN(int bookISBN) {
+	public void setBookISBN(String bookISBN) {
 		this.bookISBN = bookISBN;
 	}
 

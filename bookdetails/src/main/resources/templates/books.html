@@ -13,13 +13,23 @@
             <h2>Geek Books Store</h2>
 
             <a th:href="@{/}">Home</a> |
-            <a th:href="@{books}">Books</a> |
-            <a th:href="@{authors}">Authors</a>
+            <a th:href="@{http://localhost:8080/books}">Books</a> |
+            <a th:href="@{http://localhost:8080/authors}">Authors</a>
         </div>
 
         <h1>Books List</h1>
         <a th:href="@{/addNewBookForm}" class="btn btn-primary btn-sm mb-3"> Add New Book </a>
         <table border="1" class="table table-striped table-responsive-md">
+            <form th:action="@{/books/}">
+                Filter by ISBN: <input type="text" name="isbn" id="isbn" size="50" th:value="${isbn}" required /> &nbsp;
+                <input type="submit" value="Search" /> &nbsp;
+                <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+            </form>
+            <script type="text/javascript">
+                function clearSearch() {
+                    window.location = "[[@{/books}]]";
+                }
+            </script>
             <thead>
                 <tr>
                     <th> ISBN</th>

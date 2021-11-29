@@ -7,6 +7,7 @@ import org.group6.bookdetails.authors.service.AuthorService;
 import org.group6.bookdetails.books.Book;
 import org.group6.bookdetails.books.service.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +25,10 @@ public class BookController {
 	private AuthorService authorRepo;
 
 	@GetMapping("/books")
-	public String booklist(Model model) {
+	public String booklist(Model model, @Param("isbn") String isbn) {
 
-		model.addAttribute("listBooks", bookRepo.getAllBooks());
-		model.addAttribute("listAuthors", authorRepo.getAllAuthors());
+		model.addAttribute("listBooks", bookRepo.getAllBooks(isbn));
+		model.addAttribute("listFilteredBooks", isbn);
 		return "books";
 	}
 
@@ -52,4 +53,10 @@ public class BookController {
 		model.addAttribute("listFilteredBooks", bookRepo.findByAuthorID(id));
 		return "show_books_by_author";
 	}
+
+	/* @GetMapping("/books/)
+	public String showBooksByISBN(Model model, @PathVariable int isbn) {
+		model.addAttribute("listFilteredBooks", bookRepo.findByISBN(isbn));
+		return "show_books_by_isbn";
+	} */
 }
