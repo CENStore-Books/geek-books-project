@@ -5,9 +5,9 @@
 
 Created by:
 
-- Stephen Dunn  
-- Aaron Estevanez  
-- Wenjun Fan  
-- Michael Ferrer  
-- Pablo Flores Lugo  
-- Jason Francis
+- Stephen Dunn (Rate and Comments)  
+- Aaron Estevanez (Wishlist)  
+- Wenjun Fan (Profile Management)  
+- Michael Ferrer (Shopping Cart)  
+- Pablo Flores Lugo (Book Details)  
+- Jason Francis (Book Browsing)
