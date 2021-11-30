@@ -15,7 +15,7 @@
 			<h1 style="color:#5D6F96; font-family: Lucida Console, serif;"><b>SEARCH USERS</b></h1>
 		</div>
 	<form th:action="@{/user_list}">
-	    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+	    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required placeholder="Search by username"/>
 	    &nbsp;
 	    <input type="submit" value="Search" />
 	    &nbsp;
