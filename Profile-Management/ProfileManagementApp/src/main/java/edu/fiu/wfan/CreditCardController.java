@@ -45,7 +45,7 @@ public class CreditCardController {
 			listCreditCards = creditCardService.listAllCreditCards(keyword, user.getId());
 		}
 		model.addAttribute("listCreditCards", listCreditCards);
-		//model.addAttribute("keyword", keyword);
+		model.addAttribute("keyword", keyword);
 		return "credit_card_list";
 	}
 
