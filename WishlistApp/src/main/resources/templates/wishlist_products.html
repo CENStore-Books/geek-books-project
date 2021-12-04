@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>List of Products</title>
+<title>Wishlist Items</title>
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 </head>
@@ -14,41 +14,36 @@
 	<div class="container text-center">
 		        
 		<div>
-			<h1>Products List</h1>
+			<h1>Wishlist Items</h1>
 		</div>
 		<div>
 			<table class="table table-bordered">
 				<thead class="thead-dark">
 					<tr>
-						<th>ID</th>
+						<th>In Wishlist</th>
 						<th>Name</th>
 						<th>Author</th>
 						<th>Genre</th>
-						<th>Description</th>
-						<th>Price($)</th>
-						<th>Year Published</th>
-						<th>In Wishlist</th>
+						<th>Price($)</th>				
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<th:block th:each="product : ${listProducts}">
-						<tr>
-							<td>[[${product.id}]]</td>
+						<tr >
+							<td>[[${product.wishlist.name}]]</td>
 							<td>[[${product.bookName}]]</td>
 							<td>[[${product.bookAuthor}]]</td>
 							<td>[[${product.bookGenre}]]</td>
-							<td>[[${product.bookDescription}]]</td>
 							<td>[[${product.bookPrice}]]</td>
-							<td>[[${product.bookYearPublished}]]</td>
-							<td>[[${product.wishlist.name}]]</td>
-							<td><a th:href="@{'/products/edit/'+ ${product.id}}">Edit</a>
-								&nbsp; 
-								<a th:href="@{'/products/delete/'+ ${product.id}}">Delete</a>
-								&nbsp;
-								<a th:href="@{'/products/wishlist/view/'+ ${product.wishlist.id}}">View in Wishlist</a> 
-							</td>
+							
+							
+							<td><a th:href="@{'/products/wishlist/view/addtoshoppingcart'}">Add to Cart</a>
+									&nbsp;
+							<a th:href="@{'/products/edit/'+ ${product.id}}">Edit</a>
+								  
 						</tr>
+
 					</th:block>
 				</tbody>
 			</table>

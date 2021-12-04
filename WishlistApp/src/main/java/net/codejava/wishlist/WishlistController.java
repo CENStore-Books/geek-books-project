@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import net.codejava.product.Product;
 import net.codejava.product.ProductsRepository;
+//import net.codejava.shoppingcart.ShoppingCart;
+//import net.codejava.shoppingcart.ShoppingCartRepository;
+import net.codejava.shoppingcart.ShoppingCartWishlist;
+import net.codejava.shoppingcart.ShoppingCartRepository;
 
 
 @Controller
@@ -19,7 +23,10 @@ public class WishlistController {
 	private WishlistRepository wishlistRepo;
 	
 	@Autowired
-	private ProductsRepository productRepo;
+	public ProductsRepository productRepo;
+	
+	@Autowired
+	private ShoppingCartRepository scRepo;
 
 	
 	@GetMapping("/wishlist")
@@ -37,7 +44,6 @@ public class WishlistController {
 			
 		return "wishlist_form";
 		}
-		
 	@PostMapping("/wishlist/save")
 	public String saveWishlist(Wishlist Wishlist) {
 		wishlistRepo.save(Wishlist);
@@ -45,14 +51,13 @@ public class WishlistController {
 		return "redirect:/wishlist";
 	}
 	
+
 	
 	@GetMapping("wishlist/edit/{id}")
 	public String showEditWishlistForm(@PathVariable("id") Integer id, Model model) {
 		Wishlist wishlist = wishlistRepo.findById(id).get();
 		model.addAttribute("wishlist", wishlist);
 	
-		List<Product> listProduct = productRepo.findAll();
-		model.addAttribute("listProduct", listProduct);
 		
 		return "wishlist_form";
 	}
@@ -65,50 +70,5 @@ public class WishlistController {
 		return "redirect:/wishlist";
 	
 	}
- 	@GetMapping("/wishlist/view/{id}")
-	public String listWishlistItems(@PathVariable("id") Integer id, Product product, Model model) {
- 		Wishlist listWishlist = wishlistRepo.findById(id).get();
- 		model.addAttribute("listWishlist",listWishlist);		
- 		
- 		List<Product> listProducts = productRepo.findAll();
- 		model.addAttribute("listProducts", listProducts);
- 		
- 		
- 		//	wishlistRepo.save(Wishlist);
-
- 		
-		return "wishlist_items";
-	
-		}
-/*
- * @GetMapping("/wishlist/view/save/{id}")
-	public String saveListWishlistItems(@PathVariable("id") Integer id, Model model) {
- 		//
- 		 
- 		 
- 		
- 		
- 		//	wishlistRepo.save(Wishlist);
-
- 		
-		return "redirect:/wishlist_items";
-		}
- * 
- */
- 	/*
- 	 * @GetMapping("/wishlist/view/delete/{id}")
- 		public String deleteListWishlistItems(@PathVariable("id") Integer id, Model model) {
- 	 		//
- 	 		 
- 	 		 
- 	 		
- 	 		
- 	 		//	wishlistRepo.deleteById(id);
-
- 	 		
- 			return "redirect:/wishlist_items";
- 			}
- 	 * 
- 	 */
-	
+ 	
 }

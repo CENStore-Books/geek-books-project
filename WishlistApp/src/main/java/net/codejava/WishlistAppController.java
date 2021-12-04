@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class AppController {
+public class WishlistAppController {
 
-	@GetMapping("")
+	@GetMapping("/windex")
 	public String viewHomePage() {
-		return "index";
+		return "wishlistindex";
 	}
 	
 	

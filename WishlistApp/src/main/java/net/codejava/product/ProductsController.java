@@ -44,15 +44,15 @@ public class ProductsController {
 		public String listProducts(Model model) {
 			List<Product> listProducts = productRepo.findAll();
 			model.addAttribute("listProducts", listProducts);
-			
+						
 			return "products";
 	
 		}
-	
+	//Edits fields of product and wishlist
 	@GetMapping("products/edit/{id}")
 	public String showEditProductForm(@PathVariable("id") Integer id, Model model) {
-		Product product = productRepo.findById(id).get();
-		model.addAttribute("product", product);
+		Product listProducts = productRepo.findById(id).get();
+		model.addAttribute("product", listProducts);
 		
 		List<Wishlist> listWishlists = wishlistRepo.findAll();
 		model.addAttribute("listWishlist", listWishlists);
@@ -61,13 +61,34 @@ public class ProductsController {
 		return "product_form";
 	}
 	
+	//Deletes a product
 	@GetMapping("products/delete/{id}")
 	public String deleteProduct(@PathVariable("id") Integer id, Model model) {
+
 		productRepo.deleteById(id);
 		
 		return "redirect:/products";
 	
-	}
+	} 
 	
+	//Displays all items in specified wishlist
+	@GetMapping("/products/wishlist/view/{wishlist_id}")
+	public String listWishlistItems(@PathVariable("wishlist_id") Integer wishlist_id,  Model model) {
+		
+		model.addAttribute("listProducts", productRepo.findAllByID(wishlist_id));
+		
+		
+		return "wishlist_products";
+	}
+		//In process
+	@GetMapping("/products/wishlist/view/addtoshoppingcart")
+ 		public String addToShoppingCart(Model model, Product product) {
+	 	
+		//ist<Product> listProducts = productRepo.findAll();
+		//productRepo.
+	 
+	 	return "product_shopping_cart";
+	 
+	}
 	
 }

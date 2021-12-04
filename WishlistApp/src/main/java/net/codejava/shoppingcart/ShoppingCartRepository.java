@@ -1,14 +1,13 @@
-package net.codejava.wishlist;
+package net.codejava.shoppingcart;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface WishlistRepository extends JpaRepository<Wishlist, Integer> {
+public interface ShoppingCartRepository extends JpaRepository<ShoppingCartWishlist, Integer> {
 	
 
-	
+
 }

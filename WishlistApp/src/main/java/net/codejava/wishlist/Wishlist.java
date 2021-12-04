@@ -1,12 +1,20 @@
 package net.codejava.wishlist;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import net.codejava.product.Product;
@@ -17,22 +25,20 @@ public class Wishlist {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Integer id;
+	 private Integer  id;
     
     @Column(unique = true, nullable = false, length = 45)
     private String name;
     
-    @ManyToOne
-	@JoinColumn(name = "product_id")
-	private Product product;
+   
+    @ManyToOne(cascade = CascadeType.ALL)
+   	@JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
+
     
-    /*
-       @ManyToOne
-		@JoinColumn(name = "customer_id")
-		private Customer customer;
-     */
+	public Wishlist(){}
     
-	
+    
 	public Integer getId() {
 		return id;
 	}
@@ -54,9 +60,11 @@ public class Wishlist {
 		this.product = product;
 	}
 
-
+	@Override
+	public String toString() {
+		return this.name;
+	}	
 	
-
  
     
     

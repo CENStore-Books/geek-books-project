@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Wishlist</title>
+<title>Shopping Cart</title>
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 </head>
@@ -14,26 +14,25 @@
 	<div class="container text-center">
 		        
 		<div>
-			<h1>Wishlist</h1>
+			<h1>Shopping Cart</h1>
 		</div>
 		<div>
 			<table class="table table-bordered">
 				<thead class="thead-dark">
 					<tr>
-						<th>Name</th>
+						<th>Book Name</th>
+						<th>Price($)</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<th:block th:each="wishlist : ${listWishlist}">
-						<tr>
-							<td>[[${wishlist.name}]]</td>
-							<td> <a th:href="@{'/products/wishlist/view/'+ ${wishlist.id}}">View</a> 
-								&nbsp;
-								<a th:href="@{'/wishlist/edit/'+ ${wishlist.id}}">Edit</a>
-								&nbsp; 
-								<a th:href="@{'/wishlist/delete/'+ ${wishlist.id}}">Delete</a>
-							</td>
+					<th:block th:each="product : ${listProducts}" >
+						<tr >
+							<td>[[${product.bookName}]]</td>
+							<td>[[${product.bookPrice}]]</td>
+							
+							
+							<td> <a th:href>Delete</a></td>
 						</tr>
 					</th:block>
 				</tbody>

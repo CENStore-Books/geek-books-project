@@ -9,6 +9,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
+import net.codejava.product.Product;
+import net.codejava.product.ProductsRepository;
 import net.codejava.wishlist.Wishlist;
 import net.codejava.wishlist.WishlistRepository;
 
@@ -19,16 +21,32 @@ import net.codejava.wishlist.WishlistRepository;
 public class WishlistRepositoryTests {
 
 	@Autowired 
-	private WishlistRepository repo;
+	private WishlistRepository wishlistRepo;
 	
+	@Autowired
+	public ProductsRepository productRepo;
+	
+/*
 	@Test
 	public void testSaveItem() {
-		Wishlist savedWishlist = repo.save(new Wishlist());
 		
-		assertThat(savedWishlist.getId()).isGreaterThan(0);
+		Wishlist wishlist = wishlistRepo.findById(5).get();
+		
+		Product wishlistitem = productRepo.findByID(3);
+		wishlist.addProduct(wishlistitem);
+		
+		Wishlist savedWishlist = wishlistRepo.save(wishlist);
+		
+		assertThat(savedWishlist.getProduct());
+		
+		*/
+		
+		//Wishlist listWishlist = wishlistRepo.save(new Wishlist());
+		//assertThat(listWishlist.getId()).isGreaterThan(0);
+		
+		
 		
 	}
 	
 
 	
-}

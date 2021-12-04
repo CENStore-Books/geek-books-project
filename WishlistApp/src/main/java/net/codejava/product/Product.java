@@ -1,17 +1,25 @@
 package net.codejava.product;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+
+//import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+//import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
+import net.codejava.shoppingcart.ShoppingCartWishlist;
 import net.codejava.wishlist.Wishlist;
 
 @Entity
@@ -39,10 +47,14 @@ public class Product {
 	
 	private float bookPrice;
 	
-	@ManyToOne
-	@JoinColumn(name = "wishlist_id")
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Wishlist.class)
+	@JoinColumn(name = "wishlist_id", referencedColumnName = "id")
 	private Wishlist wishlist;
+	//private Set<Wishlist> wishlist = new HashSet<>();
 
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = ShoppingCartWishlist.class)
+   	@JoinColumn(name = "shoppingcartwishlist_id", referencedColumnName = "id")
+    private ShoppingCartWishlist shoppingcartwishlist;
 
 	public Integer getId() {
 		return id;
@@ -99,14 +111,36 @@ public class Product {
 	public void setBookPrice(float bookPrice) {
 		this.bookPrice = bookPrice;
 	}
-
+	
 	public Wishlist getWishlist() {
 		return wishlist;
 	}
-
+	
 	public void setWishlist(Wishlist wishlist) {
 		this.wishlist = wishlist;
 	}
+	public ShoppingCartWishlist getShoppingCartWishlist() {
+		return shoppingcartwishlist;
+	}
+
+	public void setShoppingCartWishlist(ShoppingCartWishlist shoppingcartwishlist) {
+		this.shoppingcartwishlist = shoppingcartwishlist;
+	}
+	
+	@Override
+	public String toString() {
+		return this.bookName;
+	}
+
 	
 	
+	
+	/*
+	public Set<Wishlist> getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(Set<Wishlist> wishlist) {
+		this.wishlist = wishlist;
+	}*/
 }
