@@ -17,14 +17,16 @@ public class BookReview {
     private final long bookid;
     private final long rating;
     private final String comment;
+    private final String date_time;
     
-    public BookReview(long id, long userid, long bookid, long rating, String comment){
+    public BookReview(long id, long userid, long bookid, long rating, String date_time, String comment){
         
         this.id = id;
         this.userid = userid;
         this.bookid = bookid;
         this.rating = rating;
         this.comment = comment;
+        this.date_time = date_time;
                    
     }
     
@@ -46,5 +48,9 @@ public class BookReview {
     
     public String comment(){
         return comment;
+    }
+    
+    public String getdate_time(){
+        return date_time;
     }
 }
