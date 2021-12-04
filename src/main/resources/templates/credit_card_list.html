@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="UTF-8">
+	<title>User Profile</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<div class="contatiner text-center">
+		<div>
+			<form th:action="@{\logout}" method="post">
+				<p align="right" style="padding: 10px; border: 2px solid #5D6F96; background:#5D6F96; color: white;">
+					<a href="http://localhost:8080/" style="color:lightblue;" align="right">&nbsp;&nbsp;&nbsp;&nbsp;<b>Home</b>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+					Welcome! 
+					<b><a sec:authentication="principal.username"></a></b>
+					<input type="submit" value="Sign Out" 
+					style="box-shadow: inset 0 0 7px 5px #ddd; 
+					background:#E2E7F2;
+					font-family: Helvetica;
+					color:#5D6F96;"/>
+				</p>
+			</form>
+		</div>
+		
+		<div> 
+			<h3 style="color:#5D6F96; font-family: Lucida Console, serif;"><b>Credit Cards List</b></h3>
+		</div>
+	<form th:action="@{/user_profile/credit_card_list}">
+	    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required placeholder="Search by Bank Name"/>
+	    &nbsp;
+	    <input type="submit" value="Search" />
+	    &nbsp;
+	    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+	</form>
+	<script type="text/javascript">
+	    function clearSearch() {
+	        window.location = "[[@{/user_profile/credit_card_list}]]";
+	    }
+	</script>
+		<hr />
+		<a th:href="@{/user_profile/credit_card_list/add}"  class="btn btn-primary btn-sm mb-3">Add New Card</a> 
+		<br />
+		<div>
+			<table class="table table-bordered table-striped table-hover table-responsive-xl">
+				<thead class="thead-dark">
+					<tr>
+						<th>User ID</th>
+						<th>Bank Name</th>
+						<th>Credit Card Number</th>
+						<th>Expiration Date</th>
+						<th>Billing Address</th>
+						<th>Manage</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="card:${listCreditCards}">  <!-- linked with "listUsers" in AppController model.addAttribute -->
+						<td th:text="${card.userId}">User ID</td>
+						<td th:text="${card.bankName}">Bank Name</td>
+						<td th:text="${card.cardNumber}"> Credit Card Number</td>
+						<td th:text="${card.expireDate}">Expiration Date</td>
+						<td th:text="${card.billingAddress}">Billing Address</td>
+						<td> 
+							<a class="fas fa-edit fa-2x icon-green" th:href="@{'/user_profile/credit_card_list/delete/' + ${card.card_id}}"
+							onclick="if(!(confirm('Are you sure you want to delete this credit card?'))) return false"
+							title="delete this credit card">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="text-center">
+			<p style="color:gray; font-family:console">Copyright &copy; GeekText</p>
+		</div>

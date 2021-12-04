@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit User Profile</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<div class="contatiner text-center">
+		<div>
+			<form th:action="@{\logout}" method="post">
+				<p align="right" style="padding: 10px; border: 2px solid #5D6F96; background:#5D6F96; color: white;">
+					<a href="http://localhost:8080/" style="color:lightblue;" align="right">&nbsp;&nbsp;&nbsp;&nbsp;<b>Home</b>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+					Welcome! 
+					<b><a sec:authentication="principal.username"></a></b>
+					<input type="submit" value="Sign Out" 
+					style="box-shadow: inset 0 0 7px 5px #ddd; 
+					background:#E2E7F2;
+					font-family: Helvetica;
+					color:#5D6F96;"/>
+				</p>
+			</form>
+		</div>
+		
+		<div> 
+			<h1 style="color:#5D6F96; font-family: Lucida Console, serif;"><b>EDIT USER PROFILE</b></h1>
+		</div>
+		<div th:if="${message != null}" class="alert alert-success text-center">
+			[[${message}]]
+		</div>
+		
+	<div class="container mt-5">
+	    <div class="row d-flex justify-content-center">
+	        <div class="col-md-7">
+	            <div class="card p-3 py-4">
+	           <form action="#" th:action="@{'/user_profile/edit_user/'+ ${currentUser.id}}" method="post" 
+	           		style="max-width: 600px; margin: 0 auto;" th:object="${currentUser}">
+	           	<table>
+	           		<tr>
+			           	<td><input type="hidden" th:value="${id}" readonly=""/></td>
+		           	</tr>
+	           		<tr>
+			           	<td>Username &nbsp;</td>
+			           	<td><input type="text" style="background:lightgray; color:gray" th:field="*{email}" readonly=""/></td>
+		           	</tr>
+	           		<tr>
+			           	<td>First Name &nbsp;</td>
+			           	<td><input type="text" name="fname" placeholder="Your first name" th:field="*{firstName}"/></td>
+		           	</tr>
+		           	<tr>
+			           	<td>Last Name &nbsp;</td> 
+			           	<td><input type="text" name="lname" placeholder="Your last name" th:field="*{lastName}"/></td>
+			       </tr>
+		           	
+		           	<tr>
+			           	<td>Reset Password &nbsp;</td> 
+			           	<td><input type="password" id="password" placeholder="New password" th:field="*{password}"
+			           		minlength="6" maxlength="20" oninput="checkPassword(this)" required/></td>
+<!-- 			           		oninput="checkPasswordMatch(document.getElementById('confirmPassword'))"/></td> -->
+		           	</tr>
+<!-- 		           	<tr> -->
+<!-- 			           	<td>Confirm Password &nbsp;</td>  -->
+<!-- 			           	<td><input type="password" id="confirmPassword" placeholder="Confirm password" th:field="*{password}"  -->
+<!-- 			           		minlength="6" maxlength="20" oninput="checkPasswordMatch(this)"/></td> -->
+<!-- 		           	</tr> -->
+		           	<tr>
+			           	<td>Phone &nbsp;</td> 
+			           	<td><input type="text" name="phone" placeholder="Your phone number" th:field="*{phone}"/></td>
+		           	</tr>
+		           	<tr>
+			           	<td>Mailing Address &nbsp;</td> 
+			           	<td><input type="text" name="maddress" placeholder="Your shipping address" th:field="*{mailingAddress}"/></td>
+		           	</tr>
+<!-- 		           	<tr> -->
+<!-- 			           	<td>Credit Card &nbsp;</td>  -->
+<!-- 			           	<td><input type="text" name="maddress" placeholder="Credit card number" th:field="*{creditCard}"/></td> -->
+<!-- 		           	</tr> -->
+<!-- 		           	<tr> -->
+<!-- 			           	<td>Expire &nbsp;</td>  -->
+<!-- 			           	<td><input type="text" name="date" placeholder="MMYY" th:field="*{expire}"/></td> -->
+<!-- 		           	</tr> -->
+<!-- 		           	<tr> -->
+<!-- 		           		<td>cvv &nbsp;</td> -->
+<!-- 			           	<td><input type="text" name="date" placeholder="###" th:field="*{cvv}"/></td> -->
+<!-- 		           	</tr> -->
+<!-- 		           	<tr> -->
+<!-- 			           	<td>Billing Address &nbsp;</td>  -->
+<!-- 			           	<td><input type="text" name="baddress" placeholder="Your billing address" th:field="*{billingAddress}"/></td> -->
+<!-- 		           	</tr> -->
+		          </table>
+		          <hr>
+		          <button type="submit" style="box-shadow: inset 0 0 7px 5px #ddd; 
+								background:#E2E7F2;
+								font-family: Helvetica;
+								color:#5D6F96;">SAVE</button>
+	    						
+	           </form>
+	           		&nbsp;&nbsp;
+					<a th:href="@{/user_profile}">Cancel</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<script type="text/javascript">
+		function checkPasswordMatch(comfirmPassword){
+			if(comfirmPassword.value != $("#password").val()){
+				confirmPassword.setCustomValidity("Password do not match!");
+			}else{
+				confirmPassword.setCustomValidity("");
+			}
+		}
+		
+		function checkPasswordLength(password){
+			if(password.value == null){
+				password.setCustomValidity("Password shouldn't be blank!");
+			}else{
+				password.setCustomValidity("");
+			}
+		}
+	</script>
+</body>
+</html>

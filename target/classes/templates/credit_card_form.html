@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="UTF-8">
+	<title>Add Credit Card</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<div class="contatiner text-center">
+		<div>
+			<form th:action="@{\logout}" method="post">
+				<p align="right" style="padding: 10px; border: 2px solid #5D6F96; background:#5D6F96; color: white;">
+					<a href="http://localhost:8080/" style="color:lightblue;" align="right">&nbsp;&nbsp;&nbsp;&nbsp;<b>Home</b>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+					Welcome! 
+					<b><a sec:authentication="principal.username"></a></b>
+					<input type="submit" value="Sign Out" 
+					style="box-shadow: inset 0 0 7px 5px #ddd; 
+					background:#E2E7F2;
+					font-family: Helvetica;
+					color:#5D6F96;"/>
+				</p>
+			</form>
+		</div>
+		<div> 
+			<h1 style="color:#5D6F96; font-family: Lucida Console, serif;"><b>Add Credit Card</b></h1>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<form action="#" th:action="@{/user_profile/credit_card_list/save}" th:object="${card}" method="POST">
+				<table>
+					<tr>
+						<td>Bank Name</td>
+						<td><input type="text" th:field="*{bankName}" placeholder="Bank Name" required></td>
+					</tr>
+					<tr>
+						<td>Credit Card Number</td>
+						<td><input type="text" th:field="*{cardNumber}" placeholder="Credit Card Number" required></td>
+					</tr>
+					<tr>
+						<td>Expiration Date</td>
+						<td><input type="text" th:field="*{expireDate}" minlength="5" maxlength="5" placeholder="MM/YY" required></td>
+					</tr>
+					<tr>
+						<td>cvv</td>
+						<td><input type="text" th:field="*{cvv}" placeholder="cvv" required></td>
+					</tr>
+					<tr>
+						<td>Billing Address</td>
+						<td><input type="text" th:field="*{billingAddress}" placeholder="Billing Address" required></td>
+					</tr>
+				</table>
+				<hr/>
+				<button type="submit" class="btn btn-primary btn-sm mb-3">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

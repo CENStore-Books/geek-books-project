@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>User List</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="contatiner text-center">
+		<div>
+			<p align="right" style="padding: 25px; border: 2px solid #5D6F96; background:#5D6F96; color: white;"></p>
+		</div>
+		
+		<div> 
+			<h1 style="color:#5D6F96; font-family: Lucida Console, serif;"><b>SEARCH USERS</b></h1>
+		</div>
+	<form th:action="@{/user_list}">
+	    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required placeholder="Search by username"/>
+	    &nbsp;
+	    <input type="submit" value="Search" />
+	    &nbsp;
+	    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+	</form>
+	<script type="text/javascript">
+	    function clearSearch() {
+	        window.location = "[[@{/user_list}]]";
+	    }
+	</script>
+		<br />
+		<div>
+			<table class="table table-bordered table-striped table-hover table-responsive-xl">
+				<thead class="thead-dark">
+					<tr>
+						<th>User ID</th>
+						<th>Username (email)</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Phone</th>
+						<th>Mailing Address</th>
+<!-- 						<th>Roles</th> -->
+<!-- 						<th></th> -->
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user:${listUsers}">  <!-- linked with "listUsers" in AppController model.addAttribute -->
+						<td th:text="${user.id}">Id</td>
+						<td th:text="${user.email}">Email</td>
+						<td th:text="${user.firstName}">First Name</td>
+						<td th:text="${user.lastName}">Last Name</td>
+						<td th:text="${user.phone}">Phone</td>
+						<td th:text="${user.mailingAddress}">Mailing Address</td>
+<!-- 						<td th:text="${user.roles}">Roles</td> -->
+<!-- 						<td>  -->
+<!-- 							<a class="fas fa-edit fa-2x icon-green" th:href="@{'/user_profile/edit_user/'+ ${user.id}}" -->
+<!-- 							title="edit this user">Edit</a> -->
+<!-- 							&nbsp;  -->
+<!-- 							<a class="fas fa-edit fa-2x icon-green" th:href="@{'/user_list/delete/' + ${user.id}}" -->
+<!-- 							title="delete this user">Delete</a> -->
+<!-- 						</td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="text-center">
+			<p style="color:gray; font-family:console">Copyright &copy; GeekText</p>
+		</div>
+	</div>
+</body>
+</html>
